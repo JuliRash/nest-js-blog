@@ -1,10 +1,19 @@
-export class CreatePostDto {
-  title: string;
-  body: string;
-  status: Status;
-}
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export enum Status {
-  DRAFT = 'DRAFT',
-  IN_PROGRESS = 'INPROGRESS',
+export class CreatePostDto {
+  @IsString()
+  @ApiProperty()
+  @IsNotEmpty()
+  title: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  body: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  category: string;
 }
